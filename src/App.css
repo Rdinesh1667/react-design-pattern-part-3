@@ -1,0 +1,87 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+/* src/styles.css */
+.board {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.column {
+    width: 30%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.274);
+    /* border-radius: 5px; */
+}
+
+.task-list {
+    padding: 10px;
+    background-color: #ffffff86;
+    min-height: 300px;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.empty-content {
+    padding: 1rem;
+}
+
+.task {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.274);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+}
+
+.edit-task,
+.add-task {
+    padding-left: 10px;
+}
+
+input,
+input[type="text"] {
+    width: 100%;
+    padding: 6px 12px;
+    color: #2e2e2e;
+    margin: 8px 0;
+    font-size: medium;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 25px;
+
+}
