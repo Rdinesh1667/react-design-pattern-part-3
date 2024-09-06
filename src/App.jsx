@@ -1,56 +1,51 @@
-import { Link, Navigate, RouterProvider, createBrowserRouter, Outlet } from 'react-router-dom';
-import DashBoard from './pages/Dashboard';
-import React from 'react';
+import { useReducer } from 'react';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import "./App.css";
+import { initialTasks } from './apis/data';
+import TaskList from './components/task/TaskList';
+import { TaskContext, TaskDispatchContext } from './context/TaskContext';
+import Layout from './layout/Layout';
+import Intro from './pages/Intro';
+import NewTaskPage from './pages/NewTaskPage';
+import { taskReducer } from './reducers/taskReducer';
 
-const Layout = () => {
-    return (
-        <React.Fragment>
-            <main>
-                <header>
-                    <h1>React Design Pattern : Part - 3</h1>
-                </header>
-                <section>
-                    <Outlet />
-                </section>
-            </main>
-        </React.Fragment>
-    );
-};
-
-const Intro = () => {
-    return (
-        <p> This for the&nbsp;
-            <b><Link to='reducer-pattern'>State Reducer Pattern</Link></b> and&nbsp;
-            <b>Component Composition Pattern</b>
-        </p>
-    )
-}
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Navigate to="/react-design-pattern" replace />
+        element: <Navigate to="/react-design-patterns" replace />
     },
     {
-        path: "react-design-pattern",
+        path: "react-design-patterns",
+        element: <Intro />
+    },
+    {
+        path: "tasks",
         element: <Layout />,
         children: [
             {
-                path: '',
-                element: <Intro />
-
+                path: "",
+                element: <TaskList />
             },
             {
-                path: "reducer-pattern",
-                element: <DashBoard />
+                path: "new",
+                element: <NewTaskPage />
             }
         ]
     }
 ]);
 
 function App() {
-    return <RouterProvider router={router} fallbackElement={"Loading ..."} />;
+
+    const [state, dispatch] = useReducer(taskReducer, initialTasks);
+
+    return (
+        <TaskContext.Provider value={state}>
+            <TaskDispatchContext.Provider value={dispatch}>
+                <RouterProvider router={router} fallbackElement={"Loading ..."} />
+            </TaskDispatchContext.Provider>
+        </TaskContext.Provider>
+    );
 }
 
 export default App;

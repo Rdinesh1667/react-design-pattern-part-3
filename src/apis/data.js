@@ -1,15 +1,14 @@
-// src/apis/data.js
 export const initialTasks = {
     tasks: [
-        { id: "task-1", content: "Take out the garbage" },
-        { id: "task-2", content: "Watch my favorite show" },
-        { id: "task-3", content: "Charge my phone" },
-        { id: "task-4", content: "Cook dinner" },
+        { id: "task-1", content: "Implement drag and drop for task board" },
+        { id: "task-2", content: "Use Context for manage globel state" },
+        { id: "task-3", content: "Fix the Bug" },
+        { id: "task-4", content: "Add user Profile future" },
     ],
     columns: [
         {
             id: "column-1",
-            title: "To Do",
+            title: "Task",
             taskIds: ["task-1", "task-2"],
         },
         {

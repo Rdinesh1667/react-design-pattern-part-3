@@ -1,24 +1,60 @@
+:root {
+    --background-color: #242424;
+    --text-color: rgba(255, 255, 255, 0.87);
+    --header-bg-color: #0f0f0f;
+    --column-bg-color: #2e2e2e;
+    --task-bg-color: #3a3a3a;
+    --nav-link-color: #007bff;
+    --button-bg-color: #1a1a1a;
+    --button-border-color: transparent;
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: dark;
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid var(--button-border-color);
+    padding: 0.3em 0.6em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--button-bg-color);
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+button:hover {
+    border-color: #000000;
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
 #root {
-    max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
     text-align: center;
-}
-
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
 }
 
 .card {
@@ -29,24 +65,37 @@
     color: #888;
 }
 
-/* src/styles.css */
+/* Board styles */
 .board {
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    background-color: var(--background-color);
 }
 
 .column {
     width: 30%;
-    background-color: #f0f0f0;
+    background-color: var(--column-bg-color);
     padding: 10px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.274);
-    /* border-radius: 5px; */
+    border-radius: 5px;
+}
+
+.new-task-container {
+    background-color: var(--task-bg-color);
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.274);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
 }
 
 .task-list {
     padding: 10px;
-    background-color: #ffffff86;
+    background-color: var(--task-bg-color);
     min-height: 300px;
     max-height: 60vh;
     overflow: auto;
@@ -57,7 +106,7 @@
 }
 
 .task {
-    background-color: #fff;
+    background-color: var(--task-bg-color);
     padding: 10px;
     margin-bottom: 8px;
     border-radius: 5px;
@@ -83,5 +132,53 @@ input[type="text"] {
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 25px;
+}
 
+.header {
+    background-color: var(--header-bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    margin: 0;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--nav-link-color);
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.nav-link:visited {
+    text-decoration: underline;
+    color: #63abf8;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #ffffff;
+        --text-color: #213547;
+        --header-bg-color: #f1f1f1;
+        --column-bg-color: #f0f0f0;
+        --task-bg-color: #ffffff;
+        --nav-link-color: #007bff;
+        --button-bg-color: #f9f9f9;
+        --button-border-color: transparent;
+
+        color-scheme: light;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+
+    button {
+        background-color: var(--button-bg-color);
+    }
 }
